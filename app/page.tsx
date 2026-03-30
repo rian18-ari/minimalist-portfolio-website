@@ -7,10 +7,14 @@ import { ContactSection } from "@/components/portfolio/contact-section"
 import { Footer } from "@/components/portfolio/footer"
 
 export default function PortfolioPage() {
+  // Ganti dengan URL foto profil Anda
+  // Contoh: "/images/profile.jpg" atau bisa juga URL eksternal
+  const profileImage = ""
+  
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
-      <HeroSection />
+      <HeroSection profileImage={profileImage || undefined} />
       <AboutSection />
       <SkillsSection />
       <ProjectsSection />

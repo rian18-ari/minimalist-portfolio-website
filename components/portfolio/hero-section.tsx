@@ -1,11 +1,16 @@
 "use client"
 
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
-export function HeroSection() {
-  const scrollToAbout = () => {
-    const element = document.querySelector("#about")
+interface HeroSectionProps {
+  profileImage?: string
+}
+
+export function HeroSection({ profileImage }: HeroSectionProps) {
+  const scrollToProjects = () => {
+    const element = document.querySelector("#projects")
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
     }
@@ -14,98 +19,69 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center px-6 pt-20"
+      className="min-h-screen flex flex-col justify-center items-center px-6 pt-24 pb-16"
     >
-      <div className="max-w-6xl mx-auto w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <p className="text-primary font-mono text-sm tracking-wider uppercase">
-                Selamat Datang
-              </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight text-balance">
-                Saya seorang
-                <span className="text-primary"> Creative Developer</span>
-              </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-                Membangun pengalaman digital yang pixel-perfect dengan fokus pada desain yang bersih, 
-                performa optimal, dan aksesibilitas yang inklusif.
-              </p>
+      <div className="max-w-4xl mx-auto w-full text-center space-y-8">
+        {/* Profile Image */}
+        <div className="flex justify-center animate-fade-in-up">
+          <div className="relative">
+            <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden bg-muted border-4 border-background shadow-lg">
+              {profileImage ? (
+                <Image
+                  src={profileImage}
+                  alt="Profile"
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-muted to-secondary flex items-center justify-center">
+                  <span className="text-3xl font-semibold text-muted-foreground">YN</span>
+                </div>
+              )}
             </div>
-
-            <div className="flex flex-wrap gap-4">
-              <Button
-                onClick={scrollToAbout}
-                className="bg-primary text-primary-foreground hover:bg-primary/90"
-              >
-                Lihat Portfolio
-                <ArrowDown className="ml-2 h-4 w-4" />
-              </Button>
-              <Button
-                variant="outline"
-                className="border-border text-foreground hover:bg-secondary"
-                asChild
-              >
-                <a href="#contact">Hubungi Saya</a>
-              </Button>
+            <div className="absolute -bottom-1 -right-1 bg-background rounded-full p-1 shadow-md">
+              <span className="text-lg">👋</span>
             </div>
-
-            <div className="flex items-center gap-6 pt-4">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="mailto:hello@example.com"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-            </div>
-          </div>
-
-          <div className="relative hidden lg:block">
-            <div className="relative w-full aspect-square max-w-md mx-auto">
-              <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl" />
-              <div className="relative bg-secondary rounded-2xl p-8 border border-border">
-                <pre className="text-sm font-mono text-muted-foreground overflow-hidden">
-                  <code>
-{`const developer = {
-  name: "Your Name",
-  role: "Creative Developer",
-  skills: [
-    "React", "Next.js",
-    "TypeScript", "Node.js"
-  ],
-  passion: "Building amazing
-            web experiences"
-};`}
-                  </code>
-                </pre>
-              </div>
-            </div>
+            <p className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-sm text-muted-foreground opacity-0 animate-fade-in animation-delay-300" style={{ animationFillMode: 'forwards' }}>
+              Your Name
+            </p>
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
-          <button
-            onClick={scrollToAbout}
-            className="text-muted-foreground hover:text-primary transition-colors animate-bounce"
+        {/* Headline */}
+        <div className="space-y-4 pt-8 opacity-0 animate-fade-in-up animation-delay-200" style={{ animationFillMode: 'forwards' }}>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-foreground leading-tight text-balance tracking-tight">
+            Building digital{" "}
+            <span className="italic font-serif">products, brands,</span> and{" "}
+            <span className="italic font-serif">experience.</span>
+          </h1>
+        </div>
+
+        {/* CTA Button */}
+        <div className="pt-4 opacity-0 animate-fade-in-up animation-delay-300" style={{ animationFillMode: 'forwards' }}>
+          <Button
+            onClick={scrollToProjects}
+            className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-6 py-5 text-sm font-medium"
           >
-            <ArrowDown className="h-6 w-6" />
-          </button>
+            Latest Shots
+            <ArrowUpRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+
+        {/* Client Logos */}
+        <div className="pt-16 opacity-0 animate-fade-in animation-delay-400" style={{ animationFillMode: 'forwards' }}>
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 text-muted-foreground">
+            <div className="flex items-center gap-2 text-sm font-medium">
+              <div className="w-6 h-6 bg-foreground rounded-sm" />
+              <span>NATIONAL<br/>BANK</span>
+            </div>
+            <span className="text-lg font-medium">mattered.</span>
+            <span className="text-2xl font-serif italic">Coca-Cola</span>
+            <span className="text-lg font-semibold tracking-tight">Adobe</span>
+            <span className="text-lg font-bold tracking-widest">SUBWAY</span>
+            <span className="text-lg"><span className="bg-foreground text-background px-1">code</span>cademy</span>
+          </div>
         </div>
       </div>
     </section>

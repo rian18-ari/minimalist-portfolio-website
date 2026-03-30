@@ -6,32 +6,34 @@ export function Footer() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-sm text-muted-foreground">
-            &copy; {currentYear} Portfolio. Dibuat dengan Next.js & Tailwind CSS.
+            &copy; {currentYear} All rights reserved.
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <a
-              href="#home"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
             >
-              Home
+              LinkedIn
             </a>
+            <span>/</span>
             <a
-              href="#about"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              href="https://dribbble.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
             >
-              About
+              Dribbble
             </a>
+            <span>/</span>
             <a
-              href="#projects"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
             >
-              Projects
-            </a>
-            <a
-              href="#contact"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              Contact
+              Instagram
             </a>
           </div>
         </div>

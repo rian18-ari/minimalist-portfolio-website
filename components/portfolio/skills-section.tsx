@@ -1,96 +1,85 @@
 "use client"
 
-const skillCategories = [
+import { useEffect, useRef, useState } from "react"
+import { Monitor, Smartphone, Palette, Code } from "lucide-react"
+
+const services = [
   {
-    title: "Frontend",
-    skills: [
-      { name: "React", level: 90 },
-      { name: "Next.js", level: 85 },
-      { name: "TypeScript", level: 85 },
-      { name: "Tailwind CSS", level: 90 },
-    ],
+    icon: Monitor,
+    title: "UX & UI",
+    description: "Designing interfaces that are intuitive, efficient, and enjoyable to use.",
   },
   {
-    title: "Backend",
-    skills: [
-      { name: "Node.js", level: 80 },
-      { name: "Express", level: 75 },
-      { name: "PostgreSQL", level: 70 },
-      { name: "MongoDB", level: 75 },
-    ],
+    icon: Smartphone,
+    title: "Web & Mobile App",
+    description: "Transforming ideas into exceptional web and mobile app experiences.",
   },
   {
-    title: "Tools & Others",
-    skills: [
-      { name: "Git", level: 85 },
-      { name: "Figma", level: 70 },
-      { name: "Docker", level: 65 },
-      { name: "AWS", level: 60 },
-    ],
+    icon: Palette,
+    title: "Design & Creative",
+    description: "Crafting visually stunning designs that connect with your audience.",
+  },
+  {
+    icon: Code,
+    title: "Development",
+    description: "Bringing your vision to life with the latest technology and design trends.",
   },
 ]
 
 export function SkillsSection() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="skills" className="py-24 px-6 bg-card/50">
+    <section ref={sectionRef} id="skills" className="py-24 px-6 bg-card">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-16">
-          <p className="text-primary font-mono text-sm tracking-wider uppercase mb-4">
-            Keahlian
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Teknologi yang Saya Kuasai
-          </h2>
+        {/* Badge */}
+        <div className={`flex justify-center mb-16 transition-all duration-500 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}>
+          <span className="inline-flex items-center px-4 py-2 rounded-full bg-secondary text-sm text-muted-foreground border border-border">
+            Services
+          </span>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category) => (
+        {/* Services Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, index) => (
             <div
-              key={category.title}
-              className="bg-card border border-border rounded-2xl p-8 space-y-6"
+              key={service.title}
+              className={`text-center space-y-4 transition-all duration-500 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <h3 className="text-xl font-semibold text-foreground">
-                {category.title}
+              <div className="flex justify-center">
+                <div className="w-14 h-14 rounded-xl border border-border bg-background flex items-center justify-center">
+                  <service.icon className="h-6 w-6 text-foreground" strokeWidth={1.5} />
+                </div>
+              </div>
+              <h3 className="text-lg font-semibold text-foreground">
+                {service.title}
               </h3>
-              <div className="space-y-5">
-                {category.skills.map((skill) => (
-                  <div key={skill.name} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-foreground">
-                        {skill.name}
-                      </span>
-                      <span className="text-xs text-muted-foreground">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-primary rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { label: "Proyek Selesai", value: "20+" },
-            { label: "Klien Puas", value: "15+" },
-            { label: "Tahun Pengalaman", value: "3+" },
-            { label: "Kontribusi Open Source", value: "50+" },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="text-center p-6 bg-card border border-border rounded-xl"
-            >
-              <div className="text-3xl font-bold text-primary mb-2">
-                {stat.value}
-              </div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {service.description}
+              </p>
             </div>
           ))}
         </div>
