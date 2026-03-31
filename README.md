@@ -19,6 +19,7 @@ yarn dev
 # or
 pnpm dev
 ```
+based on your node package youre using
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
