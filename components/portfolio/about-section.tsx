@@ -29,9 +29,9 @@ export function AboutSection() {
         <p className={`text-2xl md:text-3xl lg:text-4xl font-medium text-foreground leading-relaxed text-balance transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
-          Collaborate with brands and agencies
+          Membantu mewujudkan ide menjadi 
           <br />
-          to create <span className="italic font-serif">impactful results.</span>
+          to create <span className="italic font-serif">kenyataan .</span>
         </p>
       </div>
     </section>

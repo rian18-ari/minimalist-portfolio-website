@@ -3,6 +3,9 @@
 import { ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { FaHtml5, FaLaravel, FaPhp } from "react-icons/fa";
+import { RiTailwindCssFill } from "react-icons/ri";
+import { SiAlpinedotjs } from "react-icons/si";
 
 interface HeroSectionProps {
   profileImage?: string
@@ -44,7 +47,7 @@ export function HeroSection({ profileImage }: HeroSectionProps) {
               <span className="text-lg">👋</span>
             </div>
             <p className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-sm text-muted-foreground opacity-0 animate-fade-in animation-delay-300" style={{ animationFillMode: 'forwards' }}>
-              Your Name
+              Rian Fikri Hafiz
             </p>
           </div>
         </div>
@@ -52,9 +55,9 @@ export function HeroSection({ profileImage }: HeroSectionProps) {
         {/* Headline */}
         <div className="space-y-4 pt-8 opacity-0 animate-fade-in-up animation-delay-200" style={{ animationFillMode: 'forwards' }}>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-foreground leading-tight text-balance tracking-tight">
-            Building digital{" "}
-            <span className="italic font-serif">products, brands,</span> and{" "}
-            <span className="italic font-serif">experience.</span>
+            Membangun{" "}
+            <span className="italic font-serif">produk, brand,</span> dan{" "}
+            <span className="italic font-serif">pengalaman.</span>
           </h1>
         </div>
 
@@ -64,7 +67,7 @@ export function HeroSection({ profileImage }: HeroSectionProps) {
             onClick={scrollToProjects}
             className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-6 py-5 text-sm font-medium"
           >
-            Latest Shots
+            Paling Baru
             <ArrowUpRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
@@ -72,15 +75,11 @@ export function HeroSection({ profileImage }: HeroSectionProps) {
         {/* Client Logos */}
         <div className="pt-16 opacity-0 animate-fade-in animation-delay-400" style={{ animationFillMode: 'forwards' }}>
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 text-muted-foreground">
-            <div className="flex items-center gap-2 text-sm font-medium">
-              <div className="w-6 h-6 bg-foreground rounded-sm" />
-              <span>NATIONAL<br/>BANK</span>
-            </div>
-            <span className="text-lg font-medium">mattered.</span>
-            <span className="text-2xl font-serif italic">Coca-Cola</span>
-            <span className="text-lg font-semibold tracking-tight">Adobe</span>
-            <span className="text-lg font-bold tracking-widest">SUBWAY</span>
-            <span className="text-lg"><span className="bg-foreground text-background px-1">code</span>cademy</span>
+            <span className="text-6xl font-medium"><FaHtml5 className="text-foreground" /></span>
+            <span className="text-6xl font-serif italic"><RiTailwindCssFill className="text-foreground" /></span>
+            <span className="text-6xl font-semibold tracking-tight"><SiAlpinedotjs className="text-foreground" /></span>
+            <span className="text-6xl font-bold tracking-widest"><FaLaravel className="text-foreground" /></span>
+            <span className="text-6xl font-bold tracking-widest"><FaPhp className="text-foreground" /></span>
           </div>
         </div>
       </div>

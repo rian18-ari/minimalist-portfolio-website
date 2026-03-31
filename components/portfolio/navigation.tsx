@@ -60,10 +60,10 @@ export function Navigation() {
         <div className="flex items-center justify-between">
           {/* Email */}
           <a
-            href="mailto:hello@example.com"
+            href="mailto:fikririan16@gmail.com"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors hidden md:block"
           >
-            hello@example.com
+            fikririan16@gmail.com
           </a>
 
           {/* Center buttons */}

@@ -41,8 +41,9 @@ export function ContactSection() {
         <h2 className={`text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-8 leading-tight transition-all duration-500 delay-100 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}>
-          Tell me about your next{" "}
-          <span className="italic font-serif">project</span>
+          Mari{" "}
+          <span className="italic font-serif">berkolaborasi </span>
+          bersama
         </h2>
 
         {/* CTA Buttons */}
@@ -55,7 +56,7 @@ export function ContactSection() {
           >
             <a href="mailto:hello@example.com">
               <Mail className="mr-2 h-4 w-4" />
-              Email Me
+              Email
             </a>
           </Button>
           <Button
