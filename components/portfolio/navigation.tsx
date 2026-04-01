@@ -88,15 +88,11 @@ export function Navigation() {
 
           {/* Social Links */}
           <div className="hidden md:flex items-center gap-4 text-sm text-muted-foreground">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+            <a href="https://www.linkedin.com/in/rian-fikri-733b5a370" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
               LinkedIn
             </a>
             <span>/</span>
-            <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
-              Dribbble
-            </a>
-            <span>/</span>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+            <a href="https://www.instagram.com/rianhafiz_?igsh=OWxjdzBndHcyZndm" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
               Instagram
             </a>
           </div>

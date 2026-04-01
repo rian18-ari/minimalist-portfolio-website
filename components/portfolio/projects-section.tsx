@@ -2,49 +2,47 @@
 
 import { useEffect, useRef, useState } from "react"
 import { ExternalLink, Github } from "lucide-react"
+import Image from "next/image"
+
+interface ProjectsSectionProps {
+  projectsatu?: string
+  projectdua?: string
+  projecttiga?: string
+}
 
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "Platform e-commerce modern dengan fitur keranjang belanja, pembayaran, dan manajemen produk.",
-    tags: ["Next.js", "TypeScript", "Tailwind", "Stripe"],
+    title: "Mutabaah Thafidz Santri",
+    image: "/img/project-2.png",
+    description: "Aplikasi untuk mempermudah pencatatan hafalan Al-Qur'an santri.",
+    tags: ["Next.js", "TypeScript", "Tailwind"],
     category: "Web App",
-    demoUrl: "#",
-    githubUrl: "#",
+    demoUrl: "https://santri-wayfinder.lovable.app/",
   },
   {
     id: 2,
-    title: "Task Management App",
-    description: "Aplikasi manajemen tugas dengan fitur drag-and-drop, kolaborasi tim, dan notifikasi real-time.",
-    tags: ["React", "Node.js", "MongoDB", "Socket.io"],
+    title: "spendly",
+    image: "/img/project-3.png",
+    description: "Aplikasi manajemen keuangan untuk mempermudah pencatatan pengeluaran dan catatan keuangan penugasan karyawan.",
+    tags: ["Laravel 12", "PHP", "MySQL", "Tailwind CSS", "Alpine.js", "Livewire"],
     category: "Full Stack",
-    demoUrl: "#",
-    githubUrl: "#",
+    demoUrl: "https://www.spend.my.id/",
   },
   {
     id: 3,
-    title: "Portfolio Website",
-    description: "Website portfolio personal dengan desain minimalis, animasi halus, dan performa optimal.",
-    tags: ["Next.js", "Framer Motion", "Tailwind"],
+    title: "Toko Robotik",
+    image: "/img/project-1.png",
+    description: "Website toko online untuk menjual produk robotik.",
+    tags: ["Next.js", "TypeScript", "Tailwind"],
     category: "Website",
-    demoUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    id: 4,
-    title: "Blog Platform",
-    description: "Platform blog dengan CMS headless, SEO optimization, dan sistem komentar interaktif.",
-    tags: ["Next.js", "Sanity", "TypeScript"],
-    category: "Website",
-    demoUrl: "#",
-    githubUrl: "#",
+    demoUrl: "http://tokorobotik.rianfikri.my.id/",
   },
 ]
 
 const categories = ["Semua", "Web App", "Full Stack", "Website"]
 
-export function ProjectsSection() {
+export function ProjectsSection({projectsatu, projectdua, projecttiga}: ProjectsSectionProps) {
   const [activeCategory, setActiveCategory] = useState("Semua")
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
@@ -111,11 +109,7 @@ export function ProjectsSection() {
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="h-48 bg-secondary flex items-center justify-center">
-                <div className="w-20 h-20 rounded-2xl bg-background border border-border flex items-center justify-center group-hover:scale-105 transition-transform">
-                  <span className="text-2xl font-bold text-foreground">
-                    {project.title.charAt(0)}
-                  </span>
-                </div>
+                <Image src={project.image} alt={project.title.charAt(0)} width={20} height={20} className="w-full h-full object-cover" />
               </div>
 
               <div className="p-6 space-y-4">

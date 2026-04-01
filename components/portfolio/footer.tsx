@@ -19,15 +19,6 @@ export function Footer() {
             </a>
             <span>/</span>
             <a
-              href="https://dribbble.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors"
-            >
-              Dribbble
-            </a>
-            <span>/</span>
-            <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"

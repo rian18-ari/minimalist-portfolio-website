@@ -6,6 +6,7 @@ import Image from "next/image"
 import { FaHtml5, FaLaravel, FaPhp } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { SiAlpinedotjs } from "react-icons/si";
+import profileImage from "@/public/img/Gemini_Generated_Image_dihl3ldihl3ldihl.png"
 
 interface HeroSectionProps {
   profileImage?: string

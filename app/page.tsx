@@ -9,7 +9,10 @@ import { Footer } from "@/components/portfolio/footer"
 export default function PortfolioPage() {
   // Ganti dengan URL foto profil Anda
   // Contoh: "/images/profile.jpg" atau bisa juga URL eksternal
-  const profileImage = ""
+  const profileImage = "/img/Gemini_Generated_Image_dihl3ldihl3ldihl.png"
+  const projectsatu = "/img/project-1.png"
+  const projectdua = "/img/project-2.png"
+  const projecttiga = "/img/project-3.png"
   
   return (
     <main className="min-h-screen bg-background">
@@ -17,7 +20,7 @@ export default function PortfolioPage() {
       <HeroSection profileImage={profileImage || undefined} />
       <AboutSection />
       <SkillsSection />
-      <ProjectsSection />
+      <ProjectsSection projectsatu={projectsatu || undefined} projectdua={projectdua || undefined} projecttiga={projecttiga || undefined} />
       <ContactSection />
       <Footer />
     </main>

@@ -54,7 +54,7 @@ export function ContactSection() {
             className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-6 py-5 text-sm font-medium"
             asChild
           >
-            <a href="mailto:hello@example.com">
+            <a href="mailto:fikririan16@gmail.com">
               <Mail className="mr-2 h-4 w-4" />
               Email
             </a>
@@ -64,7 +64,7 @@ export function ContactSection() {
             className="rounded-full border-foreground/20 hover:bg-secondary px-6 py-5 text-sm font-medium"
             asChild
           >
-            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/6285710097615" target="_blank" rel="noopener noreferrer">
               <MessageCircle className="mr-2 h-4 w-4" />
               WhatsApp
             </a>
