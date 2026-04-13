@@ -5,6 +5,14 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'efpqzzmuktkhvzjyohtv.supabase.co', // Ganti dengan hostname Supabase-mu
+        port: '',
+        pathname: '/storage/v1/object/public/**',
+      },
+    ],
   },
 }
 

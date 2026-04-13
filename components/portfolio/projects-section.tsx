@@ -3,66 +3,65 @@
 import { useEffect, useRef, useState } from "react"
 import { ExternalLink, Github } from "lucide-react"
 import Image from "next/image"
+// Import client supabase yang sudah kamu buat tadi
+import { supabase } from "@/lib/supabase" 
 
-interface ProjectsSectionProps {
-  projectsatu?: string
-  projectdua?: string
-  projecttiga?: string
+// Sesuaikan interface dengan kolom di DB kamu
+interface Project {
+  id: number
+  title: string
+  slug: string
+  description: string
+  tech_stack: string // Karena di DB kamu tipe 'text'
+  image_banner?: string 
+  git_hub: string
+  demo_url: string
+  is_published: boolean
+  category: string
 }
 
-const projects = [
-  {
-    id: 1,
-    title: "Mutabaah Thafidz Santri",
-    image: "/img/project-2.png",
-    description: "Aplikasi untuk mempermudah pencatatan hafalan Al-Qur'an santri.",
-    tags: ["Next.js", "TypeScript", "Tailwind"],
-    category: "Web App",
-    demoUrl: "https://santri-wayfinder.lovable.app/",
-  },
-  {
-    id: 2,
-    title: "spendly",
-    image: "/img/project-3.png",
-    description: "Aplikasi manajemen keuangan untuk mempermudah pencatatan pengeluaran dan catatan keuangan penugasan karyawan.",
-    tags: ["Laravel 12", "PHP", "MySQL", "Tailwind CSS", "Alpine.js", "Livewire"],
-    category: "Full Stack",
-    demoUrl: "https://www.spend.my.id/",
-  },
-  {
-    id: 3,
-    title: "Toko Robotik",
-    image: "/img/project-1.png",
-    description: "Website toko online untuk menjual produk robotik.",
-    tags: ["Next.js", "TypeScript", "Tailwind"],
-    category: "Website",
-    demoUrl: "http://tokorobotik.rianfikri.my.id/",
-  },
-]
-
-const categories = ["Semua", "Web App", "Full Stack", "Website"]
-
-export function ProjectsSection({projectsatu, projectdua, projecttiga}: ProjectsSectionProps) {
+export function ProjectsSection() {
+  const [projects, setProjects] = useState<Project[]>([])
   const [activeCategory, setActiveCategory] = useState("Semua")
   const [isVisible, setIsVisible] = useState(false)
+  const [loading, setLoading] = useState(true)
   const sectionRef = useRef<HTMLElement>(null)
 
+  // 1. Fungsi Fetch Data dari Supabase
+  useEffect(() => {
+    const fetchProjects = async () => {
+      setLoading(true)
+      const { data, error } = await supabase
+        .from('porto-project') // Nama tabel sesuai screenshot kamu
+        .select('*')
+        .eq('is_published', true) // Hanya ambil yang dipublish
+        .order('id', { ascending: false })
+
+      if (error) {
+        console.error("Error fetching projects:", error)
+      } else {
+        setProjects(data || [])
+      }
+      setLoading(false)
+    }
+
+    fetchProjects()
+  }, [])
+
+  // 2. Observer untuk Animasi
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
+        if (entry.isIntersecting) setIsVisible(true)
       },
       { threshold: 0.1 }
     )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current)
     return () => observer.disconnect()
   }, [])
+
+  // 3. Logic Filter
+  const categories = ["Semua", ...Array.from(new Set(projects.map(p => p.category)))]
 
   const filteredProjects =
     activeCategory === "Semua"
@@ -72,6 +71,7 @@ export function ProjectsSection({projectsatu, projectdua, projecttiga}: Projects
   return (
     <section ref={sectionRef} id="projects" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
+        {/* Header Section */}
         <div className={`mb-16 text-center transition-all duration-500 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}>
@@ -82,6 +82,7 @@ export function ProjectsSection({projectsatu, projectdua, projecttiga}: Projects
             Proyek <span className="italic font-serif">Terbaru</span>
           </h2>
 
+          {/* Filter Buttons */}
           <div className="flex flex-wrap justify-center gap-3">
             {categories.map((category) => (
               <button
@@ -99,64 +100,89 @@ export function ProjectsSection({projectsatu, projectdua, projecttiga}: Projects
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {filteredProjects.map((project, index) => (
-            <div
-              key={project.id}
-              className={`group bg-card border border-border rounded-2xl overflow-hidden hover:border-foreground/30 transition-all duration-500 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <div className="h-48 bg-secondary flex items-center justify-center">
-                <Image src={project.image} alt={project.title.charAt(0)} width={20} height={20} className="w-full h-full object-cover" />
-              </div>
-
-              <div className="p-6 space-y-4">
-                <div>
-                  <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                    {project.category}
-                  </span>
-                  <h3 className="text-xl font-semibold text-foreground mt-1 group-hover:text-foreground/80 transition-colors">
-                    {project.title}
-                  </h3>
+        {/* Projects Grid */}
+        {loading ? (
+          <div className="text-center text-muted-foreground">Memuat project...</div>
+        ) : (
+          <div className="grid md:grid-cols-2 gap-6">
+            {filteredProjects.map((project, index) => (
+              <div
+                key={project.id}
+                className={`group bg-card border border-border rounded-2xl overflow-hidden hover:border-foreground/30 transition-all duration-500 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                {/* Thumbnail */}
+                <div className="h-48 bg-secondary relative overflow-hidden">
+                  {project.image_banner ? (
+                     <Image 
+                        src={project.image_banner} 
+                        alt={project.title} 
+                        fill 
+                        className="object-cover transition-transform duration-500 group-hover:scale-110" 
+                     />
+                  ) : (
+                    <div className="flex items-center justify-center h-full text-muted-foreground italic">
+                      No Image
+                    </div>
+                  )}
                 </div>
 
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 text-xs font-medium bg-secondary text-muted-foreground rounded-full"
-                    >
-                      {tag}
+                <div className="p-6 space-y-4">
+                  <div>
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                      {project.category}
                     </span>
-                  ))}
-                </div>
+                    <h3 className="text-xl font-semibold text-foreground mt-1">
+                      {project.title}
+                    </h3>
+                  </div>
 
-                <div className="flex items-center gap-4 pt-4 border-t border-border">
-                  <a
-                    href={project.demoUrl}
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                    Live Demo
-                  </a>
-                  {/* <a
-                    href={project.githubUrl}
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <Github className="h-4 w-4" />
-                    Source Code
-                  </a> */}
+                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+                    {project.description}
+                  </p>
+
+                  {/* Tech Stack - Handling String to Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech_stack.split(',').map((tag) => (
+                      <span
+                        key={tag.trim()}
+                        className="px-3 py-1 text-xs font-medium bg-secondary text-muted-foreground rounded-full"
+                      >
+                        {tag.trim()}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex items-center gap-4 pt-4 border-t border-border">
+                    {project.demo_url && (
+                      <a
+                        href={project.demo_url}
+                        target="_blank"
+                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        Live Demo
+                      </a>
+                    )}
+                    {project.git_hub && (
+                      <a
+                        href={project.git_hub}
+                        target="_blank"
+                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        <Github className="h-4 w-4" />
+                        Source
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )
