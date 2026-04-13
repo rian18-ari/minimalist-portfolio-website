@@ -31,7 +31,7 @@ export function AboutSection() {
         }`}>
           Membantu mewujudkan ide menjadi 
           <br />
-          to create <span className="italic font-serif">kenyataan .</span>
+          menjadi <span className="italic font-serif">kenyataan .</span>
         </p>
       </div>
     </section>

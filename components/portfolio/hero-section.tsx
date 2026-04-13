@@ -4,8 +4,8 @@ import { ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { FaHtml5, FaLaravel, FaPhp } from "react-icons/fa";
-import { RiTailwindCssFill } from "react-icons/ri";
-import { SiAlpinedotjs } from "react-icons/si";
+import { RiTailwindCssFill, RiSupabaseFill } from "react-icons/ri";
+import { SiAlpinedotjs, SiNextdotjs } from "react-icons/si";
 import profileImage from "@/public/img/Gemini_Generated_Image_dihl3ldihl3ldihl.png"
 
 interface HeroSectionProps {
@@ -81,6 +81,8 @@ export function HeroSection({ profileImage }: HeroSectionProps) {
             <span className="text-6xl font-semibold tracking-tight"><SiAlpinedotjs className="text-foreground" /></span>
             <span className="text-6xl font-bold tracking-widest"><FaLaravel className="text-foreground" /></span>
             <span className="text-6xl font-bold tracking-widest"><FaPhp className="text-foreground" /></span>
+            <span className="text-6xl font-bold tracking-widest"><RiSupabaseFill className="text-foreground" /></span>
+            <span className="text-6xl font-bold tracking-widest"><SiNextdotjs className="text-foreground" /></span>
           </div>
         </div>
       </div>
