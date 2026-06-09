@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Mail, MessageCircle, Handshake } from "lucide-react"
+import { Mail, MessageCircle, Handshake, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function ContactSection() {
@@ -68,6 +68,16 @@ export function ContactSection() {
               <MessageCircle className="mr-2 h-4 w-4" />
               WhatsApp
             </a>
+          </Button>
+          <Button
+            variant="outline"
+            className="rounded-full border-foreground/20 hover:bg-secondary px-6 py-5 text-sm font-medium"
+            asChild
+          >
+            <a href="/cv/RianFikriHafiz-CV-03-indo.pdf" 
+            download="Rian_Fikri_Hafiz_CV.pdf">
+              <FileText className="mr-2 h-4 w-4" />
+              CV</a>
           </Button>
         </div>
       </div>

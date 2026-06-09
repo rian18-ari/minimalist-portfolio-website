@@ -14,8 +14,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Portfolio | Creative Developer',
-  description: 'Personal portfolio showcasing projects and skills in web development',
+  title: 'Portofolio | Pengembang Kreatif',
+  description: 'Portofolio pribadi yang menampilkan proyek dan keahlian dalam pengembangan web',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="id">
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         {children}
         <Analytics />

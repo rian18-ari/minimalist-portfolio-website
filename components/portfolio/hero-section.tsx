@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { FaHtml5, FaLaravel, FaPhp } from "react-icons/fa";
 import { RiTailwindCssFill, RiSupabaseFill } from "react-icons/ri";
-import { SiAlpinedotjs, SiNextdotjs } from "react-icons/si";
+import { SiAlpinedotjs, SiNextdotjs, SiLivewire, SiMysql, SiFlutter } from "react-icons/si";
 import profileImage from "@/public/img/Gemini_Generated_Image_dihl3ldihl3ldihl.png"
 
 interface HeroSectionProps {
@@ -33,7 +33,7 @@ export function HeroSection({ profileImage }: HeroSectionProps) {
               {profileImage ? (
                 <Image
                   src={profileImage}
-                  alt="Profile"
+                  alt="Profil"
                   width={128}
                   height={128}
                   className="w-full h-full object-cover"
@@ -60,6 +60,7 @@ export function HeroSection({ profileImage }: HeroSectionProps) {
             <span className="italic font-serif">produk, brand,</span> dan{" "}
             <span className="italic font-serif">pengalaman.</span>
           </h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Mahasiswa Informatika yang berfokus pada pengembangan aplikasi web menggunakan Laravel, Livewire, dan teknologi modern untuk membantu bisnis bekerja lebih efisien.</p>
         </div>
 
         {/* CTA Button */}
@@ -68,7 +69,7 @@ export function HeroSection({ profileImage }: HeroSectionProps) {
             onClick={scrollToProjects}
             className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-6 py-5 text-sm font-medium"
           >
-            Paling Baru
+            Apa yang sudah saya buat ?
             <ArrowUpRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
@@ -76,13 +77,46 @@ export function HeroSection({ profileImage }: HeroSectionProps) {
         {/* Client Logos */}
         <div className="pt-16 opacity-0 animate-fade-in animation-delay-400" style={{ animationFillMode: 'forwards' }}>
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 text-muted-foreground">
-            <span className="text-6xl font-medium"><FaHtml5 className="text-foreground" /></span>
-            <span className="text-6xl font-serif italic"><RiTailwindCssFill className="text-foreground" /></span>
-            <span className="text-6xl font-semibold tracking-tight"><SiAlpinedotjs className="text-foreground" /></span>
-            <span className="text-6xl font-bold tracking-widest"><FaLaravel className="text-foreground" /></span>
-            <span className="text-6xl font-bold tracking-widest"><FaPhp className="text-foreground" /></span>
-            <span className="text-6xl font-bold tracking-widest"><RiSupabaseFill className="text-foreground" /></span>
-            <span className="text-6xl font-bold tracking-widest"><SiNextdotjs className="text-foreground" /></span>
+            <div className="flex flex-col items-center gap-2 group">
+              <FaHtml5 className="text-5xl md:text-6xl text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
+              <span className="text-xs md:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">HTML 5</span>
+            </div>
+            <div className="flex flex-col items-center gap-2 group">
+              <RiTailwindCssFill className="text-5xl md:text-6xl text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
+              <span className="text-xs md:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">Tailwind CSS</span>
+            </div>
+            <div className="flex flex-col items-center gap-2 group">
+              <SiAlpinedotjs className="text-5xl md:text-6xl text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
+              <span className="text-xs md:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">Alpine.js</span>
+            </div>
+            <div className="flex flex-col items-center gap-2 group">
+              <FaLaravel className="text-5xl md:text-6xl text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
+              <span className="text-xs md:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">Laravel</span>
+            </div>
+            <div className="flex flex-col items-center gap-2 group">
+              <FaPhp className="text-5xl md:text-6xl text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
+              <span className="text-xs md:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">PHP</span>
+            </div>
+            <div className="flex flex-col items-center gap-2 group">
+              <RiSupabaseFill className="text-5xl md:text-6xl text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
+              <span className="text-xs md:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">Supabase</span>
+            </div>
+            <div className="flex flex-col items-center gap-2 group">
+              <SiNextdotjs className="text-5xl md:text-6xl text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
+              <span className="text-xs md:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">Next.js</span>
+            </div>
+            <div className="flex flex-col items-center gap-2 group">
+              <SiLivewire className="text-5xl md:text-6xl text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
+              <span className="text-xs md:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">Livewire</span>
+            </div>
+            <div className="flex flex-col items-center gap-2 group">
+              <SiMysql className="text-5xl md:text-6xl text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
+              <span className="text-xs md:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">MySQL</span>
+            </div>
+            <div className="flex flex-col items-center gap-2 group">
+              <SiFlutter className="text-5xl md:text-6xl text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
+              <span className="text-xs md:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">Flutter</span>
+            </div>
           </div>
         </div>
       </div>

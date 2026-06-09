@@ -5,11 +5,11 @@ import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Beranda", href: "#home" },
+  { label: "Tentang", href: "#about" },
+  { label: "Keahlian", href: "#skills" },
+  { label: "Proyek", href: "#projects" },
+  { label: "Kontak", href: "#contact" },
 ]
 
 export function Navigation() {
@@ -72,17 +72,8 @@ export function Navigation() {
               variant="outline"
               size="sm"
               className="rounded-full text-xs border-foreground/20 hover:bg-foreground hover:text-background transition-all"
-              onClick={() => navigator.clipboard.writeText("hello@example.com")}
-            >
-              Copy
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="rounded-full text-xs border-foreground/20 hover:bg-foreground hover:text-background transition-all"
               asChild
             >
-              <a href="#" download>CV</a>
             </Button>
           </div>
 
@@ -94,6 +85,10 @@ export function Navigation() {
             <span>/</span>
             <a href="https://www.instagram.com/rianhafiz_?igsh=OWxjdzBndHcyZndm" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
               Instagram
+            </a>
+            <span>/</span>
+            <a href="https://github.com/rian18-ari" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+              GitHub
             </a>
           </div>
 

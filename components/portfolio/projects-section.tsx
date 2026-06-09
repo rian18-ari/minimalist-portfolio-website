@@ -124,7 +124,7 @@ export function ProjectsSection() {
                      />
                   ) : (
                     <div className="flex items-center justify-center h-full text-muted-foreground italic">
-                      No Image
+                      Tidak Ada Gambar
                     </div>
                   )}
                 </div>
@@ -164,7 +164,7 @@ export function ProjectsSection() {
                         className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                       >
                         <ExternalLink className="h-4 w-4" />
-                        Live Demo
+                        Demo Langsung
                       </a>
                     )}
                     {project.git_hub && (
@@ -174,7 +174,7 @@ export function ProjectsSection() {
                         className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                       >
                         <Github className="h-4 w-4" />
-                        Source
+                        Sumber Kode
                       </a>
                     )}
                   </div>

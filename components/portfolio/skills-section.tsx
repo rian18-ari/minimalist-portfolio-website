@@ -6,14 +6,14 @@ import { Monitor, Smartphone, Palette, Code } from "lucide-react"
 const services = [
   {
     icon: Smartphone,
-    title: "Web & Mobile App",
-    description: "Transforming ideas into exceptional web and mobile app experiences.",
+    title: "Aplikasi Web & Mobile",
+    description: "Mengubah ide menjadi pengalaman aplikasi web dan mobile yang luar biasa.",
   },
 
   {
     icon: Code,
-    title: "Development",
-    description: "Bringing your vision to life with the latest technology and design trends.",
+    title: "Pengembangan",
+    description: "Mewujudkan visi Anda dengan teknologi dan tren desain terbaru.",
   },
 ]
 
