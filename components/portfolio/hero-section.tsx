@@ -60,7 +60,7 @@ export function HeroSection({ profileImage }: HeroSectionProps) {
             <span className="italic font-serif">produk, brand,</span> dan{" "}
             <span className="italic font-serif">pengalaman.</span>
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Mahasiswa Informatika yang berfokus pada pengembangan aplikasi web menggunakan Laravel, Livewire, dan teknologi modern untuk membantu bisnis bekerja lebih efisien.</p>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Mahasiswa Teknologi Rekayasa Perangkat Lunak yang mengembangkan aplikasi web dan mobile menggunakan Laravel, Flutter, dan teknologi modern untuk menciptakan solusi digital yang bermanfaat.</p>
         </div>
 
         {/* CTA Button */}

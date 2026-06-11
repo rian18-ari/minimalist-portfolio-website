@@ -1,19 +1,19 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Monitor, Smartphone, Palette, Code } from "lucide-react"
+import { Smartphone, Code } from "lucide-react"
 
 const services = [
   {
     icon: Smartphone,
-    title: "Aplikasi Web & Mobile",
-    description: "Mengubah ide menjadi pengalaman aplikasi web dan mobile yang luar biasa.",
+    title: "Aplikasi Mobile",
+    description: "Mengeksplorasi pengembangan aplikasi mobile melalui Flutter untuk menciptakan pengalaman digital yang lebih personal dan interaktif.",
   },
 
   {
     icon: Code,
-    title: "Pengembangan",
-    description: "Mewujudkan visi Anda dengan teknologi dan tren desain terbaru.",
+    title: "Aplikasi Web",
+    description: "Merancang dan membangun aplikasi web yang fungsional, efisien, dan mudah digunakan menggunakan Laravel dan teknologi modern.",
   },
 ]
 
@@ -45,7 +45,7 @@ export function SkillsSection() {
         <div className={`flex justify-center mb-16 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}>
           <span className="inline-flex items-center px-4 py-2 rounded-full bg-secondary text-sm text-muted-foreground border border-border">
-            Layanan
+            Fokus saya
           </span>
         </div>
 

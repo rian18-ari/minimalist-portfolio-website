@@ -29,10 +29,9 @@ export function AboutSection() {
         <p className={`text-2xl md:text-3xl lg:text-4xl font-medium text-foreground leading-relaxed text-balance transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
-          Membantu mewujudkan ide menjadi 
-          <br />
-          menjadi <span className="italic font-serif">kenyataan .</span>
+          dari <span className="italic font-serif"> website</span> ke <span className="italic font-serif">mobile app .</span>
         </p>
+        <p className="mt-8 text-muted-foreground max-w-2xl mx-auto">Perjalanan saya dimulai dari pengenmbangan aplikasi berbasis web, lalu saya mulai mengeksplorasi pengembangan aplikasi mobile melalui Flutter dan menemukan ketertarikan baru dalam menciptakan pengalaman digital yang lebih dekat dengan pengguna. Setiap proyek menjadi kesempatan untuk belajar, berkembang, dan memahami bagaimana teknologi dapat menyelesaikan masalah nyata.</p>
       </div>
     </section>
   )

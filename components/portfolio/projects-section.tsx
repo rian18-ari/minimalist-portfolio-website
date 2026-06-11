@@ -1,8 +1,9 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, ArrowUpRight } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 // Import client supabase yang sudah kamu buat tadi
 import { supabase } from "@/lib/supabase" 
 
@@ -76,10 +77,10 @@ export function ProjectsSection() {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}>
           <span className="inline-flex items-center px-4 py-2 rounded-full bg-secondary text-sm text-muted-foreground border border-border mb-8">
-            Portfolio
+            Apa yang sudah saya buat?
           </span>
           <h2 className="text-3xl md:text-4xl font-medium text-foreground mb-8">
-            Proyek <span className="italic font-serif">Terbaru</span>
+            Portofolio <span className="italic font-serif">Saya</span>
           </h2>
 
           {/* Filter Buttons */}
@@ -108,35 +109,41 @@ export function ProjectsSection() {
             {filteredProjects.map((project, index) => (
               <div
                 key={project.id}
-                className={`group bg-card border border-border rounded-2xl overflow-hidden hover:border-foreground/30 transition-all duration-500 ${
+                className={`group bg-card border border-border rounded-2xl overflow-hidden hover:border-foreground/30 transition-all duration-500 flex flex-col ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 {/* Thumbnail */}
-                <div className="h-48 bg-secondary relative overflow-hidden">
+                <Link 
+                  href={`/projects/${project.slug}`} 
+                  className="h-48 bg-secondary relative overflow-hidden block"
+                >
                   {project.image_banner ? (
                      <Image 
                         src={project.image_banner} 
                         alt={project.title} 
                         fill 
-                        className="object-cover transition-transform duration-500 group-hover:scale-110" 
+                        className="object-cover transition-transform duration-500 group-hover:scale-105" 
                      />
                   ) : (
                     <div className="flex items-center justify-center h-full text-muted-foreground italic">
                       Tidak Ada Gambar
                     </div>
                   )}
-                </div>
+                </Link>
 
-                <div className="p-6 space-y-4">
+                <div className="p-6 space-y-4 flex-grow flex flex-col">
                   <div>
                     <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
                       {project.category}
                     </span>
-                    <h3 className="text-xl font-semibold text-foreground mt-1">
-                      {project.title}
-                    </h3>
+                    <Link href={`/projects/${project.slug}`} className="block group/title">
+                      <h3 className="text-xl font-semibold text-foreground mt-1 flex items-center gap-2 hover:text-muted-foreground transition-colors">
+                        {project.title}
+                        <ArrowUpRight className="h-4 w-4 opacity-0 -translate-y-1 translate-x-1 group-hover/title:opacity-100 group-hover/title:translate-y-0 group-hover/title:translate-x-0 transition-all" />
+                      </h3>
+                    </Link>
                   </div>
 
                   <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
@@ -156,27 +163,35 @@ export function ProjectsSection() {
                   </div>
 
                   {/* Links */}
-                  <div className="flex items-center gap-4 pt-4 border-t border-border">
-                    {project.demo_url && (
-                      <a
-                        href={project.demo_url}
-                        target="_blank"
-                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                        Demo Langsung
-                      </a>
-                    )}
-                    {project.git_hub && (
-                      <a
-                        href={project.git_hub}
-                        target="_blank"
-                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        <Github className="h-4 w-4" />
-                        Sumber Kode
-                      </a>
-                    )}
+                  <div className="flex items-center gap-4 pt-4 border-t border-border mt-auto">
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="text-sm font-medium text-foreground hover:opacity-70 transition-opacity"
+                    >
+                      Lihat Detail
+                    </Link>
+                    <div className="ml-auto flex items-center gap-4">
+                      {project.demo_url && (
+                        <a
+                          href={project.demo_url}
+                          target="_blank"
+                          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          Demo
+                        </a>
+                      )}
+                      {project.git_hub && (
+                        <a
+                          href={project.git_hub}
+                          target="_blank"
+                          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          <Github className="h-4 w-4" />
+                          Kode
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
