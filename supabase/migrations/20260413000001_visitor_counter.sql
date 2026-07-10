@@ -22,3 +22,14 @@ CREATE POLICY "increment_visitor_counter" ON "public"."visitor_counter"
 GRANT ALL ON TABLE "public"."visitor_counter" TO "anon";
 GRANT ALL ON TABLE "public"."visitor_counter" TO "authenticated";
 GRANT ALL ON TABLE "public"."visitor_counter" TO "service_role";
+
+CREATE OR REPLACE FUNCTION "public"."increment_visitor"()
+RETURNS void
+LANGUAGE sql
+AS $$
+  UPDATE "public"."visitor_counter" SET "count" = "count" + 1 WHERE "id" = 1;
+$$;
+
+GRANT ALL ON FUNCTION "public"."increment_visitor"() TO "anon";
+GRANT ALL ON FUNCTION "public"."increment_visitor"() TO "authenticated";
+GRANT ALL ON FUNCTION "public"."increment_visitor"() TO "service_role";
