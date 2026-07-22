@@ -74,7 +74,7 @@ export function ContactSection() {
             className="rounded-full border-foreground/20 hover:bg-secondary px-6 py-5 text-sm font-medium"
             asChild
           >
-            <a href="/cv/RianFikriHafiz-CV-03-indo.pdf" 
+            <a href="/cv/RIAN_FIKRI_HAFIZ_Resume.pdf" 
             download="Rian_Fikri_Hafiz_CV.pdf">
               <FileText className="mr-2 h-4 w-4" />
               CV</a>

@@ -13,7 +13,7 @@ const services = [
   {
     icon: Code,
     title: "Aplikasi Web",
-    description: "Merancang dan membangun aplikasi web yang fungsional, efisien, dan mudah digunakan menggunakan Laravel dan teknologi modern.",
+    description: "Merancang dan membangun aplikasi web yang fungsional, efisien, dan mudah digunakan menggunakan Laravel dan teknologi modern lainnya.",
   },
 ]
 
